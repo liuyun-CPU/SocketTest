@@ -22,10 +22,9 @@ namespace WindowsFormsApp3
         {
             InitializeComponent();
             form1 = this;
-            myIP = textBox1.Text;
-            myPort = int.Parse(textBox2.Text);
+            comboBox1.Items.AddRange(commandlist);
         }
-
+        string[] commandlist = {"write","color","btn","text" };
         private static byte[] result = new byte[1024];      //创建字节数组
         private int myPort = 8885;                   //端口
         private string myIP = "127.0.0.1";          //ip
@@ -38,16 +37,26 @@ namespace WindowsFormsApp3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //服务器IP地址
-            IPAddress ip = IPAddress.Parse(myIP);    //构造IP
-            serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);     //指定套接字类型：TCP模式
-                                                                                                            //AddressFamily:网络类型  SocketType：套接字类型 ProtocolType:使用的网络协议
-            serverSocket.Bind(new IPEndPoint(ip, myPort));  //绑定IP地址：端口
-            serverSocket.Listen(10);                        //设定最多10个排队链接请求
-            uiRichTextBox2.Text += ("启动监听{0}成功!", serverSocket.LocalEndPoint.ToString());
-            //通过Client_Socket发送数据
-            Thread myThread = new Thread(ListenClientConnect);  //创建一个新的线程，并用于监听客户端链接
-            myThread.Start();
+            try
+            {
+                myIP = textBox1.Text;
+                myPort = int.Parse(textBox2.Text);
+                //服务器IP地址
+                IPAddress ip = IPAddress.Parse(myIP);    //构造IP
+                serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);     //指定套接字类型：TCP模式
+                                                                                                                //AddressFamily:网络类型  SocketType：套接字类型 ProtocolType:使用的网络协议
+                serverSocket.Bind(new IPEndPoint(ip, myPort));  //绑定IP地址：端口
+                serverSocket.Listen(10);                        //设定最多10个排队链接请求
+                uiRichTextBox2.Text += ("启动监听{0}成功!", serverSocket.LocalEndPoint.ToString());
+                //通过Client_Socket发送数据
+                Thread myThread = new Thread(ListenClientConnect);  //创建一个新的线程，并用于监听客户端链接
+                myThread.Start();
+            }
+            catch (Exception ex)
+            {
+                serverSocket.Shutdown(SocketShutdown.Both);
+                serverSocket.Close();
+            }
         }
 
         int EachID = 0;
@@ -127,17 +136,24 @@ namespace WindowsFormsApp3
             byte[] buffer = Encoding.Default.GetBytes(msg);
             socket.Send(buffer);
         }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
+            TcpResponseModel tcpResponseMode = new TcpResponseModel();
+            tcpResponseMode.Command = comboBox1.SelectedItem.ToString();
+            tcpResponseMode.ID = (int)numericUpDown1.Value;
+            tcpResponseMode.Msg = textBox4.Text;
+            string t = MsgCode(tcpResponseMode);
             Thread tSend = new Thread(SendAll);
-            tSend.Start(uiRichTextBox1.Text);
+            tSend.Start(t);
         }
         
         public TcpResponseModel SendData = new TcpResponseModel();
         public TcpResponseModel RecData = new TcpResponseModel();
         private void MsgDecode(string Msg)
         {
+            Msg=Msg.Replace("{","[{");
+            Msg=Msg.Replace("}", "}]");
             List<TcpResponseModel> spmeasJncds = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TcpResponseModel>>(Msg);
             RecData = spmeasJncds[0];
             uiRichTextBox3.Text = $"ID:{RecData.ID},cmd:{RecData.Command},msg:{RecData.Msg}" + Environment.NewLine;
@@ -164,6 +180,12 @@ namespace WindowsFormsApp3
         {
             string temp= "{\"ID\":0,\"Msg\":\"red\",\"Command\":\"write\"}";
             MsgDecode(temp);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Thread tSend = new Thread(SendAll);
+            tSend.Start(uiRichTextBox1.Text);
         }
     }
 

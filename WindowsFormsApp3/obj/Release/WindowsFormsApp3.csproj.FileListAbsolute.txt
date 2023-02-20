@@ -1,0 +1,12 @@
+F:\socket\socketTest\WindowsFormsApp3\bin\Release\WindowsFormsApp3.exe.config
+F:\socket\socketTest\WindowsFormsApp3\bin\Release\WindowsFormsApp3.exe
+F:\socket\socketTest\WindowsFormsApp3\bin\Release\WindowsFormsApp3.pdb
+F:\socket\socketTest\WindowsFormsApp3\bin\Release\Newtonsoft.Json.dll
+F:\socket\socketTest\WindowsFormsApp3\bin\Release\SunnyUI.dll
+F:\socket\socketTest\WindowsFormsApp3\obj\Release\WindowsFormsApp3.csproj.AssemblyReference.cache
+F:\socket\socketTest\WindowsFormsApp3\obj\Release\WindowsFormsApp3.Form1.resources
+F:\socket\socketTest\WindowsFormsApp3\obj\Release\WindowsFormsApp3.Properties.Resources.resources
+F:\socket\socketTest\WindowsFormsApp3\obj\Release\WindowsFormsApp3.csproj.GenerateResource.cache
+F:\socket\socketTest\WindowsFormsApp3\obj\Release\WindowsFormsApp3.csproj.CoreCompileInputs.cache
+F:\socket\socketTest\WindowsFormsApp3\obj\Release\WindowsFormsApp3.exe
+F:\socket\socketTest\WindowsFormsApp3\obj\Release\WindowsFormsApp3.pdb

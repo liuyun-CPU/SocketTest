@@ -47,9 +47,14 @@ namespace WindowsFormsApp3
             this.uiLedBulb3 = new Sunny.UI.UILedBulb();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.button5 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.uiGroupBox1.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -135,6 +140,10 @@ namespace WindowsFormsApp3
             // 
             // uiGroupBox2
             // 
+            this.uiGroupBox2.Controls.Add(this.comboBox1);
+            this.uiGroupBox2.Controls.Add(this.button5);
+            this.uiGroupBox2.Controls.Add(this.numericUpDown1);
+            this.uiGroupBox2.Controls.Add(this.textBox4);
             this.uiGroupBox2.Controls.Add(this.button2);
             this.uiGroupBox2.Controls.Add(this.uiRichTextBox1);
             this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F);
@@ -168,7 +177,7 @@ namespace WindowsFormsApp3
             this.uiRichTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiRichTextBox1.Name = "uiRichTextBox1";
             this.uiRichTextBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.uiRichTextBox1.Size = new System.Drawing.Size(417, 143);
+            this.uiRichTextBox1.Size = new System.Drawing.Size(417, 36);
             this.uiRichTextBox1.TabIndex = 1;
             // 
             // uiGroupBox3
@@ -242,6 +251,38 @@ namespace WindowsFormsApp3
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(275, 159);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(121, 29);
+            this.textBox4.TabIndex = 4;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(24, 159);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(84, 29);
+            this.numericUpDown1.TabIndex = 5;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(298, 98);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(118, 25);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "send";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(133, 159);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 29);
+            this.comboBox1.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -265,7 +306,9 @@ namespace WindowsFormsApp3
             this.Text = "Form1";
             this.uiGroupBox1.ResumeLayout(false);
             this.uiGroupBox2.ResumeLayout(false);
+            this.uiGroupBox2.PerformLayout();
             this.uiGroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,6 +334,10 @@ namespace WindowsFormsApp3
         private Sunny.UI.UILedBulb uiLedBulb3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
